@@ -8,6 +8,7 @@ class GildedRose(var items: List<Item>) {
     private val SULFURAS = "Sulfuras, Hand of Ragnaros"
     private val BRIE = "Aged Brie"
     private val PASS = "Backstage passes to a TAFKAL80ETC concert"
+    private val CONJURED = "conjured"
 
     private val MIN_QUALITY = 0
     private val MAX_QUALITY = 50
@@ -35,6 +36,10 @@ class GildedRose(var items: List<Item>) {
                 if (item.sellIn < 0) {
                     qualityDecline *= 2
                     qualityIncrease *= 2
+                }
+
+                if (item.name.contains(CONJURED, ignoreCase = true)) {
+                    qualityDecline *= 2
                 }
 
                 when (item.name) {
